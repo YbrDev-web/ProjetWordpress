@@ -48,3 +48,71 @@ function ProjetOpenclassroom_getIcon($name)
 
     return $markups[$name] ?? '';
 }
+
+add_action('customize_register', 'ProjetOpenclassroom_customize_register');
+function ProjetOpenclassroom_customize_register($wp_customize)
+{
+    $wp_customize->add_section('ProjetOpenclassroom_params', [
+        'title' => __('Réglages ProjetOpenclassroom', 'ProjetOpenclassroom'),
+        'description' => __('Faites-vous plaisir en faisant du sport :)', 'ProjetOpenclassroom'),
+        'priority' => 1,
+        'capability' => 'edit_theme_options',
+    ]);
+
+    $wp_customize->add_setting('main_color', [
+        'type' => 'theme_mod', // or 'option'
+        'capability' => 'edit_theme_options',
+        'default' => '#3f51b5',
+        'transport' => 'refresh', // or postMessage
+        'sanitize_callback' => 'sanitize_hex_color'
+    ]);
+
+    $wp_customize->add_control(
+        new WP_Customize_Color_Control($wp_customize, 'main_color', [
+            'label' => __('Couleur principale', 'ProjetOpenclassroom'),
+            'section' => 'ProjetOpenclassroom_params',
+            'priority' => 1,
+        ])
+    );
+
+    $wp_customize->add_setting('dark_mode', [
+        'type' => 'theme_mod', // or 'option'
+        'capability' => 'edit_theme_options',
+        'default' => false,
+        'transport' => 'refresh', // or postMessage
+        'sanitize_callback' => 'ProjetOpenclassroom_sanitize_bool'
+    ]);
+
+    $wp_customize->add_control('dark_mode', [
+        'type' => 'checkbox',
+        'priority' => 2, // Within the section.
+        'section' => 'ProjetOpenclassroom_params', // Required, core or custom.
+        'label' => __('Dark mode', 'ProjetOpenclassroom'),
+        'description' => __('Black is beautiful :)', 'ProjetOpenclassroom'),
+    ]);
+}
+
+function ProjetOpenclassroom_sanitize_bool($value)
+{
+    return is_bool($value) ? $value : false;
+}
+
+
+// Application des parametres custom
+
+add_action('wp_head', 'ProjetOpenclassroom_wp_head', 99);
+function ProjetOpenclassroom_wp_head()
+{
+    $main_color = get_theme_mod('main_color', '#3f51b5');
+    echo '<style>:root{ --main-color: ' . $main_color . '}</style>';
+}
+
+
+add_filter('body_class', 'ProjetOpenclassroom_body_class');
+function ProjetOpenclassroom_body_class($classes)
+{
+    if (get_theme_mod('dark_mode', false)) {
+        $classes[] = 'dark';
+    }
+    return $classes;
+}
