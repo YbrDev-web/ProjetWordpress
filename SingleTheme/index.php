@@ -1,11 +1,13 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>
+<?php get_header(); ?>
+
+<main>
+    <?php include('Template-parts/identity_card.php'); ?>
+
+    <?php if (!is_front_page()) {
+        include('Template-parts/post-list.php');
+    }
+    ?>
+</main>
+
+
+<?php get_footer() ?>
