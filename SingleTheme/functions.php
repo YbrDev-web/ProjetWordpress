@@ -15,3 +15,16 @@ function ProjetOpenclassroom_add_theme_support()
     add_theme_support('custom-logo');
     add_theme_support('post-thumbnails');
 }
+
+add_action('wp_enqueue_scripts', 'ProjetOpenclassroom_enqueue_assets');
+function ProjetOpenclassroom_enqueue_assets()
+{
+    wp_enqueue_style('main', get_stylesheet_uri());
+}
+
+// Customisation de l'affichage des titres
+//add_filter('the_title', 'esgi_customTitle', 10, 1);
+function ProjetOpenclassroom_customTitle($title)
+{
+    return strtoupper($title);
+}
