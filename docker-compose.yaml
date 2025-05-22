@@ -21,13 +21,13 @@ services:
     volumes:
       - wp_data:/var/www/html
       - type: bind
-        source: ./MyTheme
-        target: /var/www/html/wp-content/themes/MyTheme
+        source: ./SingleTheme
+        target: /var/www/html/wp-content/themes/SingleTheme
       - type: bind
-        source: ./MyPlugins
-        target: /var/www/html/wp-content/plugins/MyPlugins
+        source: ./SinglePlugin
+        target: /var/www/html/wp-content/plugins/SinglePlugin
     ports:
-      - 88:80
+      - 87:80
     restart: always
     environment:
       - WORDPRESS_DB_HOST=db
