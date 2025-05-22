@@ -5,16 +5,16 @@
     <footer>
         <ul>
             <li>
-                <a href="#"><?= MySport_getIcon('twitter') ?></a>
+                <a href="#"><?= ProjetOpenclassroom_getIcon('twitter') ?></a>
             </li>
             <li>
-                <a href="#"><?= MySport_getIcon('facebook') ?></a>
+                <a href="#"><?= ProjetOpenclassroom_getIcon('facebook') ?></a>
             </li>
             <li>
-                <a href="#"><?= MySport_getIcon('google') ?></a>
+                <a href="#"><?= ProjetOpenclassroom_getIcon('google') ?></a>
             </li>
             <li>
-                <a href="#"><?= MySport_getIcon('linkedin') ?></a>
+                <a href="#"><?= ProjetOpenclassroom_getIcon('linkedin') ?></a>
             </li>
         </ul>
     </footer>
