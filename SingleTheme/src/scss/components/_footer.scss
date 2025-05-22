@@ -1,7 +1,7 @@
 @use "../partials/fonts";
 @use "../partials/functions" as f;
 
-.site-footer {
+.MyFooter {
 	font-family: fonts.$font1;
 	text-align: center;
 	margin-top: f.rem(58);
