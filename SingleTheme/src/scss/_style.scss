@@ -1,0 +1,14 @@
+@use "vendor/modern-normalize";
+// pour le plaisir d'utiliser une lib tierse... ce serait plus opti de faire des composants custom
+@use "vendor/bootstrap-grid";
+
+@use "partials/colors";
+@use "partials/fonts";
+@use "partials/functions";
+@use "partials/globals";
+@use "partials/post";
+
+@use "components/header";
+@use "components/footer";
+@use "components/identity-card";
+@use "components/post-list";
